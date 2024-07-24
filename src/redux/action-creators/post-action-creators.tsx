@@ -40,7 +40,7 @@ const setCurrentPage = (currentPage: number) => ({
 function* fetchLoadPosts(action: any) {
     const { postsOptions } = action;
     const { perPage, currentPage } = postsOptions;
-    const response: Response = yield fetch(`https://studapi.teachmeskills.by/blog/posts?limit=${ perPage }&offset=${(currentPage - 1) * perPage}`);
+    const response: Response = yield fetch(`https://api.spaceflightnewsapi.net/v4/articles/?limit=${ perPage }&offset=${(currentPage - 1) * perPage}`);
     const { results, count }: IPostResponse = yield response.json();
     yield put(setPosts(results));
     yield put(setTotal(count));
@@ -48,7 +48,7 @@ function* fetchLoadPosts(action: any) {
 
 function* fetchSelectedPost(action:any) {
     const { id } = action;
-    const response: Response = yield fetch(`https://studapi.teachmeskills.by/blog/posts/${id}`);
+    const response: Response = yield fetch(`https://api.spaceflightnewsapi.net/v4/articles/${id}`);
     const post: IPost = yield response.json();
     yield put(setSelectedPost(post))
 }

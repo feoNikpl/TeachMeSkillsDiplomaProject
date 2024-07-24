@@ -1,0 +1,22 @@
+@import '../scss/colors';
+
+.header{
+    padding: 20px 0;
+    background-color: $_background-color-white;
+}
+
+.header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    a{
+        color: $_background-color-white;
+        font-family: Inter;
+    }
+    background-color: $_background-color-purple;
+    padding: 8px 16px 8px 5px;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+}

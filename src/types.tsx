@@ -7,13 +7,33 @@ interface IUIState {
     theme: THEMES
 }
 
+interface IStoreState {
+    posts: IPostsState,
+    ui: IUIState
+}
+
 interface IPost {
     id: number,
-    image: string,
-    text: string,
-    date: string,
-    title: string,
-    author: number
+    title:string,
+    url:string,
+    image_url: string,
+    news_site: string,
+    summary:string,
+    published_at:string,
+    updated_at: string,
+    featured: boolean,
+    launches: Array<ILaunch>,
+    events: Array<IEvent>
+}
+
+interface ILaunch{
+    launch_id: string,
+    provider: string
+}
+
+interface IEvent{
+    event_id: number,
+    provider: string
 }
 
 interface IPostResponse {
@@ -35,6 +55,7 @@ interface IPostsState {
 }
 
 export type {
+    IStoreState,
     IUIState,
     IPost,
     IPostsState,
