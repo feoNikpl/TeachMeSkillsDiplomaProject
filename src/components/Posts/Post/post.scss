@@ -1,0 +1,53 @@
+@import "../../scss/colors";
+@import "../../scss/mixins";
+
+.post-card {
+    width: 270px;
+    margin-bottom: 48px;
+    background-color: $_system-color-primary2;
+
+    .post-card__image {
+        width: 100%;
+        overflow: hidden;
+        margin: 0 auto 30px;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            height: 264px;
+        }
+
+        a {
+            opacity: 1;
+        }
+    }
+
+    a {
+        color: $_background-color-white;
+        text-align: center;
+        opacity: .7;
+        transition: .2s;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    h3 {
+        @include h3;
+        margin-bottom: 50px;
+        padding: 0 6px;
+    }
+
+    .post-card__subtitle {
+        font-size: 16px;
+        font-family: "Inter";
+        margin: 10px 10px;
+        color: gray;
+    }
+}

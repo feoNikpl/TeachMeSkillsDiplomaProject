@@ -1,0 +1,11 @@
+@mixin h1 {
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 56px;
+}
+
+@mixin h3 {
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 18px;
+}

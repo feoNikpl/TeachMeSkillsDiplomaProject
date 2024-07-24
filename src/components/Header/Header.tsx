@@ -1,3 +1,4 @@
+import { Search } from "../Search";
 import "./header.scss";
 import { Link } from "react-router-dom";
 
@@ -10,6 +11,9 @@ const Header = () => {
                         <Link to="/">
                             BLOGOLOGO
                         </Link>
+                    </div>
+                    <div>
+                        <Search/>
                     </div>
                 </div>
             </div>

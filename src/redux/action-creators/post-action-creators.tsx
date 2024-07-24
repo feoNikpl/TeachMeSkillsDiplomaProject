@@ -1,5 +1,5 @@
 import { IPost, IPostResponse, IPostsOptions } from "../../types";
-import { LOAD_POSTS, LOAD_SELECTED_POST, SET_CURRENT_PAGE, SET_PER_PAGE, SET_POSTS, SET_SELECTED_POST, SET_TOTAL } from "../action-types";
+import { LOAD_POSTS, LOAD_SEARCH_POSTS, LOAD_SELECTED_POST, SET_CURRENT_PAGE, SET_PER_PAGE, SET_POSTS, SET_SELECTED_POST, SET_TOTAL } from "../action-types";
 import { put, takeEvery } from "redux-saga/effects"
 
 const setPosts = (posts: IPost[]) => ({
@@ -53,9 +53,26 @@ function* fetchSelectedPost(action:any) {
     yield put(setSelectedPost(post))
 }
 
+const loadSearchPosts = (searchValue: string, currentPage: number) => ({
+    type: LOAD_SEARCH_POSTS,
+    searchValue,
+    currentPage
+})
+
+function* fetchLoadSearchPosts(action: any) {
+    const { searchValue } = action;
+    const response: Response = yield fetch(`https://api.spaceflightnewsapi.net/v4/articles/?search=${searchValue}`);
+    const { results, count }: IPostResponse = yield response.json();
+    
+    yield put(setTotal(count));
+    yield put(setCurrentPage(1));
+    yield put(setPosts(results));
+}
+
 function* watcherPosts() {
     yield takeEvery(LOAD_POSTS, fetchLoadPosts)
     yield takeEvery(LOAD_SELECTED_POST, fetchSelectedPost)
+    yield takeEvery(LOAD_SEARCH_POSTS, fetchLoadSearchPosts)
 }
 
 export {
@@ -67,4 +84,5 @@ export {
     setTotal,
     setCurrentPage,
     watcherPosts,
+    loadSearchPosts
 }

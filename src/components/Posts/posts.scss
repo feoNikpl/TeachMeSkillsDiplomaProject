@@ -1,19 +1,21 @@
-.books {
+@import '../scss/mixins';
+
+.posts {
     padding: 72px 0 0 0;
 
-    .books-wrap {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(352px, auto));
-        justify-items: center;
-        column-gap: 12px;
-        border-bottom: 1px solid $_system-color-secondary;
+    h1{
+        width: 80%;
+        margin: 0 auto;
+        @include h1;
+        margin-bottom: 40px;
     }
 
-    .empty {
-        font-size: 40px;
-        font-family: "Helios";
-        color: $_contextual-color-red;
-        text-align: center;
-        margin-bottom: 60px;
+    .posts-wrap {
+        margin: 0 auto;
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, auto));
+        justify-items: center;
+        column-gap: 12px;
     }
 }

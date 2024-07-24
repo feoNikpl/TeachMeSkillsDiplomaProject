@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { IStoreState, IPostsOptions} from "../../types";
+import { IStoreState} from "../../types";
 import { loadPosts } from "../../redux/action-creators";
+import './posts.scss'
+import { Post } from "./Post/Post";
 
 const Posts = () => {
     const posts = useSelector((state: IStoreState)=> state.posts.posts);
@@ -13,11 +15,11 @@ const Posts = () => {
         <section className="posts">
             <div className="container">
                 <h1>
-                    New realeases books
+                    Blog
                 </h1>
                 <div className="posts-wrap">
                     {
-                        posts.map(x => <h1>{x.id}</h1>)
+                        posts.map(x => <Post key={x.id} post={x}/>)
                     }
                 </div>
             </div>
