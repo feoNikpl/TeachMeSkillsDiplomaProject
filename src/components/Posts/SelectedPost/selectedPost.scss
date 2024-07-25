@@ -1,0 +1,42 @@
+@import '../../scss/mixins';
+.selected-post {
+    padding: 0 64px;
+    margin: 0 auto 72px auto; 
+    width: 80%;
+
+    h1{
+        margin: 0 auto;
+        @include h1;
+        margin-bottom: 40px;
+    }
+
+    &__nav{
+        display: flex;
+        a{
+            color: black;
+        }
+        margin-bottom: 10px;
+    }
+
+    &__image {
+        margin-bottom: 48px;
+
+        img {
+            object-fit: contain;
+            object-position: center;
+            width: 100%;
+            max-height: 518px;
+        }
+    }
+
+    &__text {
+        padding: 0 10px;
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 18px;
+        text-align: justify;
+        line-height: 32px;
+        color: black;
+        margin-bottom: 48px;
+    }
+}

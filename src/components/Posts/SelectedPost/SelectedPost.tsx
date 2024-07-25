@@ -26,17 +26,10 @@ const SelectedPost = () => {
                     </div>
                     <h1>{selectedPost?.title}</h1>
                     <div className="selected-post__image">
-                        <img src={selectedPost?.image_url} alt="logo" />
+                        <img src={selectedPost?.image_url} alt="img" />
                     </div>
-                    <div className={`selected-post__text ${theme === THEMES.DARK ? "dark" : ""}`}>
-                        <LoremIpsum p={4}/>
-                    </div>
-                    <div className="selected-post__buttons">
-                        <div className="button-eval">
-                            
-                        </div>
-                        <div className="button-favorites">
-                        </div>
+                    <div className='selected-post__text'>
+                        <LoremIpsum p={7}/>
                     </div>
                 </div>
             </div>

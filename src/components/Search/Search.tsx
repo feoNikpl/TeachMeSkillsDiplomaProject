@@ -15,15 +15,12 @@ const Search = () => {
         if(searchValue)
             navigate(`/posts/search/${searchValue}`);
         else
-            navigate(`/posts`);
+            navigate(`/`);
     }
     
     return(
         <div className="search" onKeyDown={(e) => { if (e.key === "Enter") handleSearchClick() }}>
             <input placeholder="Search" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
-            <button onClick={() => handleSearchClick()}>
-                search
-            </button>
         </div>
     )
 }

@@ -1,13 +1,14 @@
+import './App.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Header } from "./components";
-import { Footer } from "./components/Footer";
-import { Posts } from "./components/Posts";
-import { SelectedPost } from "./components/Posts/SelectedPost";
-import { SearchPosts } from "./components/Posts/SearchedPosts";
+import { Header, Footer, Posts, SelectedPost, SearchPosts } from "./components";
+import { useSelector } from 'react-redux';
+import { IStoreState, THEMES } from './types'
 
-function App() {
+const App = () => {
+  const theme = useSelector((state: IStoreState) => state.ui.theme)
   return (
     <BrowserRouter basename="/">
+      <div className={`${theme === THEMES.DARK ? "dark" : ""}`}>
       <Header/>
       <Routes>
         <Route path="/">
@@ -21,6 +22,7 @@ function App() {
         </Route>
       </Routes>
       <Footer/>
+      </div>
     </BrowserRouter>
   );
 }

@@ -8,7 +8,7 @@ const Footer = () => {
     const theme = useSelector((state: IStoreState) => state.ui.theme)
     const dispatch = useDispatch();
     return (
-        <footer className={`footer ${theme === THEMES.DARK ? "dark" : ""}`}>
+        <footer className='footer'>
             <div className="container">
                 <div className="info">
                     <div className="info__year">

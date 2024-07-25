@@ -42,7 +42,6 @@ interface IPostResponse {
 }
 
 interface IPostsOptions {
-    perPage: number;
     currentPage: number;
 }
 

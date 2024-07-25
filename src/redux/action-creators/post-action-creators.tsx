@@ -1,5 +1,5 @@
 import { IPost, IPostResponse, IPostsOptions } from "../../types";
-import { LOAD_POSTS, LOAD_SEARCH_POSTS, LOAD_SELECTED_POST, SET_CURRENT_PAGE, SET_PER_PAGE, SET_POSTS, SET_SELECTED_POST, SET_TOTAL } from "../action-types";
+import { LOAD_POSTS, LOAD_SEARCH_POSTS, LOAD_SELECTED_POST, SET_CURRENT_PAGE, SET_POSTS, SET_SELECTED_POST, SET_TOTAL } from "../action-types";
 import { put, takeEvery } from "redux-saga/effects"
 
 const setPosts = (posts: IPost[]) => ({
@@ -22,10 +22,6 @@ const loadSelectedPost = (id: string) => ({
     id
 })
 
-const setPerPage = (perPage: number) => ({
-    type: SET_PER_PAGE,
-    perPage
-})
 
 const setTotal = (total: number) => ({
     type: SET_TOTAL,
@@ -39,8 +35,8 @@ const setCurrentPage = (currentPage: number) => ({
 
 function* fetchLoadPosts(action: any) {
     const { postsOptions } = action;
-    const { perPage, currentPage } = postsOptions;
-    const response: Response = yield fetch(`https://api.spaceflightnewsapi.net/v4/articles/?limit=${ perPage }&offset=${(currentPage - 1) * perPage}`);
+    const { currentPage } = postsOptions;
+    const response: Response = yield fetch(`https://api.spaceflightnewsapi.net/v4/articles/?limit=15&offset=${(currentPage - 1) * 15}`);
     const { results, count }: IPostResponse = yield response.json();
     yield put(setPosts(results));
     yield put(setTotal(count));
@@ -80,7 +76,6 @@ export {
     loadPosts,
     setSelectedPost,
     loadSelectedPost,
-    setPerPage,
     setTotal,
     setCurrentPage,
     watcherPosts,

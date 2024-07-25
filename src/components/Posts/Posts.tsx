@@ -4,13 +4,15 @@ import { IStoreState} from "../../types";
 import { loadPosts } from "../../redux/action-creators";
 import './posts.scss'
 import { Post } from "./Post/Post";
+import { Pagination } from "./Pagination";
 
 const Posts = () => {
     const posts = useSelector((state: IStoreState)=> state.posts.posts);
+    const currentPage = useSelector((state: IStoreState)=> state.posts.currentPage);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(loadPosts({ perPage:15,currentPage:1}));
-    }, []);
+        dispatch(loadPosts({currentPage}));
+    }, [currentPage]);
     return(
         <section className="posts">
             <div className="container">
@@ -22,6 +24,7 @@ const Posts = () => {
                         posts.map(x => <Post key={x.id} post={x}/>)
                     }
                 </div>
+                <Pagination/>
             </div>
         </section>
     )
