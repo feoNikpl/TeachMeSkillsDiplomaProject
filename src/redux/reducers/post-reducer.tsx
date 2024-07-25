@@ -1,12 +1,13 @@
-import { IPost, IPostsState } from "../../types"
-import { SET_CURRENT_PAGE, SET_PER_PAGE, SET_POSTS, SET_SELECTED_POST, SET_TOTAL } from "../action-types";
+import { IPost, IPostsState, Sort } from "../../types"
+import { SET_CURRENT_PAGE, SET_PER_PAGE, SET_POSTS, SET_SELECTED_POST, SET_SORT_FIELD, SET_TOTAL } from "../action-types";
 
 const initialState = {
     posts: [] as IPost[],
     selectedPost: {} as IPost,
     perPage: 15,
     total: 0,
-    currentPage: 1
+    currentPage: 1,
+    sortField : Sort.PUBLISHED_AT
 }
 
 const postsReducer = (state: IPostsState = initialState, action: any) => {
@@ -16,6 +17,14 @@ const postsReducer = (state: IPostsState = initialState, action: any) => {
             return ({
                 ...state,
                 posts
+            })
+        }
+
+        case SET_SORT_FIELD:{
+            const { sortField } = action;
+            return ({
+                ...state,
+                sortField: sortField
             })
         }
 

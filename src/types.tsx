@@ -3,6 +3,11 @@ export enum THEMES {
     DARK = 'dark'
 }
 
+export enum Sort{
+    TITLE='title',
+    PUBLISHED_AT='published_at'
+}
+
 interface IUIState {
     theme: THEMES
 }
@@ -43,11 +48,13 @@ interface IPostResponse {
 
 interface IPostsOptions {
     currentPage: number;
+    sortField: string
 }
 
 interface IPostsState {
     posts: IPost[],
     selectedPost: IPost,
+    sortField : string,
     perPage: number,
     total: number,
     currentPage: number,

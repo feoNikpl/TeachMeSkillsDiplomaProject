@@ -1,7 +1,30 @@
+@import "../../scss/colors";
 .pgn{
     width: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
+
+    &-btn {
+        font-size: 20px;
+        font-family: 'Inter';
+        background-color: transparent;
+        color: $_system-color-primary2;
+        &-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 11px
+        }
+
+        &:hover {
+            opacity: 0.9;
+        }
+
+        &:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+    }
 }

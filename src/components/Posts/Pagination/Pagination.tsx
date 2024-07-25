@@ -14,13 +14,13 @@ const Pagination = () => {
         <div className='pgn'>
             <button className='pgn-btn' disabled={currentPage === 1} onClick={() => dispatch(setCurrentPage(currentPage - 1))}>
                 <div className='pgn-btn-content'>
-                    <div>Prev</div>
+                    <div>{'<'}Prev</div>
                 </div>
             </button>
 
             <button className='pgn-btn' disabled={currentPage === maxPage} onClick={() => dispatch(setCurrentPage(currentPage + 1))}>
                 <div className='pgn-btn-content'>
-                    <div>Next</div>
+                    <div>Next{'>'}</div>
                 </div>
             </button>
         </div>
